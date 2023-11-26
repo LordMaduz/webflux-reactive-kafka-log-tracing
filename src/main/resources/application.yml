@@ -1,0 +1,12 @@
+spring:
+  application.name: reactive-log-tracing
+
+management:
+  tracing:
+    enabled: true
+    sampling.probability: 1.0
+
+
+logging:
+# traceID and spanId are predefined MDC keys - we want the logs to include them
+  pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
